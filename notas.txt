@@ -1,0 +1,90 @@
+https://www.youtube.com/watch?v=ANdSdIlgsEw
+https://www.youtube.com/watch?v=FSMrzYpBeDM
+----------------
+Crear un proyecto de react native 
+npx react-native init ProyectName
+npx react-native init AwesomeTSProject --template react-native-template-typescript (con TS)
+npm install (instalar dependencias)
+----------------------------------------------------------------
+Componentes
+
+View: es un componente para crear una vista o pantalla
+Text: para colocar texto
+Scrollview: componete para poder hacer scrollo a la pantalla
+flatlist: ...
+textinput -> placeholder, onchangeText
+
+inicio con boton de google
+npm i @react-native-google-signin/google-signin
+https://ibjects.medium.com/google-signin-tutorial-for-react-native-81a57fb67b18
+
+Buscar lave sha-1 
+keytool -list -v -keystore ./android/App/debug.keystore -alias androiddebugkey -storepass android -keypass android
+-----react navigation------
+
+
+npm install @react-navigation/native
+npm install react-native-screens react-native-safe-area-context
+npm install @react-navigation/stack
+npm install react-native-gesture-handler
+npm install @react-native-masked-view/masked-view
+npm install @react-navigation/bottom-tabs
+
+-------npm install react-native-cli
+
+---------- react native vector icon--------
+https://github.com/oblador/react-native-vector-icons#android
+npm install --save react-native-vector-icons
+
+-------------JWT Decode 
+npm install jwt-decode
+
+-------------------
+navigation 
+Stack navigation
+drawer navigation
+useSafeAreaInsets()
+useEffect()
+import plataform from react-native // permite saber en que plataforma se esta trabajando
+--------------
+mapear puertos de ADB con localhost
+adb reverse tcp:8000 tcp:8000
+
+------------------- Generar APK ----------------------------------------------------------------
+https://www.youtube.com/watch?v=zeZ6GQyOBC0
+Construir APK
+1. keytool -genkey -v -keystore your_key_name.keystore -alias your_key_alias -keyalg RSA -keysize 2048 -validity 10000
+
+2. copiar el archivo generado (your_key_name.keystore) a la carpeta /android/app 
+
+3. Abrir el archivo /android/gradle.properties y agregar las siguientes lineas de codigo
+MYAPP_UPLOAD_STORE_FILE=my-upload-key.keystore
+MYAPP_UPLOAD_KEY_ALIAS=my-key-alias
+MYAPP_UPLOAD_STORE_PASSWORD=*****
+MYAPP_UPLOAD_KEY_PASSWORD=*****
+
+4. Abrir el archivo android\app\build.gradle 
+signingConfigs {
+    release {
+      storeFile file('your_key_name.keystore')
+      storePassword 'your_key_store_password'
+      keyAlias 'your_key_alias'
+      keyPassword 'your_key_file_alias_password'
+    }
+}
+
+buildTypes {
+    release {
+      ....
+      signingConfig signingConfigs.release
+    }
+}
+
+5. Entramos a la carpeta /android
+cd android
+
+6. Ejecutamos el comando para crear el apk
+./gradlew assembleDebug
+
+7. Nuestra apk queda en el directorio
+/android/app/build/outputs/apk/debug/
