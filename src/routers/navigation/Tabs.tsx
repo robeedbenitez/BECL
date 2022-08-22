@@ -3,9 +3,9 @@ import {
     createBottomTabNavigator
 } from '@react-navigation/bottom-tabs';
 import Dashboard from '../../views/Dashboard'
-import UserScreen from '../../views/UserScreen'
 import theme from '../../style/theme'
 import Icon from 'react-native-vector-icons/Ionicons';
+import UserProfile from '../../views/UserProfile';
 const Tab = createBottomTabNavigator();
 
 const Tabs = () => {
@@ -22,7 +22,7 @@ const Tabs = () => {
                             case 'Dashboard':
                                 iconName = 'apps-outline';
                                 break;
-                            case 'UserScreen':
+                            case 'UserProfile':
                                 iconName = 'person-outline';
                                 break;
                         }
@@ -41,8 +41,8 @@ const Tabs = () => {
                 }}
             />
             <Tab.Screen
-                name="UserScreen"
-                component={UserScreen}
+                name="UserProfile"
+                component={UserProfile}
                 options={{
                     tabBarLabel: "Perfil",
                     header: () => null,

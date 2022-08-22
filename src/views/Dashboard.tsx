@@ -8,12 +8,10 @@ import {
 } from 'react-native'
 // My imports
 import GeneralTable from '../consts/GeneralTable';
-import useData from '../data/useData';
+import {getDashboardData} from '../data/indexData';
 import ServicesButtonView from '../components/dashboard/ServicesButtonView'
 
 const Dashboard = () => {
-  const data = useData();
-  console.log(data);
   return (
     <View style={styles.body}>
       <ImageBackground
@@ -24,7 +22,7 @@ const Dashboard = () => {
         <SafeAreaView >
           <View style={styles.container}>
             <GeneralTable
-              data={data}
+              data={getDashboardData()}
               numColumns={2}
               renderItem={ServicesButtonView}
             />
